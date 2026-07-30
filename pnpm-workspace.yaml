@@ -1,0 +1,8 @@
+overrides:
+    '@types/react': 19.2.14
+    '@types/react-dom': 19.2.3
+
+onlyBuiltDependencies:
+    - prisma
+    - '@prisma/client'
+    - '@prisma/engines'
