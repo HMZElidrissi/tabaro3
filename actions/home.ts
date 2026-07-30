@@ -7,8 +7,13 @@ export async function getBloodRequests(page: number = 1, limit: number = 9) {
     try {
         const skip = (page - 1) * limit;
 
+        const where = {
+            OR: [{ userId: null }, { user: { deletedAt: null } }],
+        };
+
         const [requests, total] = await Promise.all([
             prisma.bloodRequest.findMany({
+                where,
                 include: {
                     user: {
                         select: {
@@ -29,7 +34,7 @@ export async function getBloodRequests(page: number = 1, limit: number = 9) {
                 skip,
                 take: limit,
             }),
-            prisma.bloodRequest.count(),
+            prisma.bloodRequest.count({ where }),
         ]);
 
         return {

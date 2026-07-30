@@ -87,6 +87,7 @@ export async function getBloodRequests({
                         id: true,
                         name: true,
                         email: true,
+                        deletedAt: true,
                     },
                 },
                 city: {
@@ -113,6 +114,7 @@ export const getBloodRequest = async (id: number) => {
                     id: true,
                     name: true,
                     email: true,
+                    deletedAt: true,
                 },
             },
             city: {

@@ -94,7 +94,14 @@ export function BloodRequestsTable({
                             </TableCell>
                             <TableCell>{request.phone}</TableCell>
                             <TableCell>
-                                {request.user?.name || 'Admin Request'}
+                                <div className="flex items-center gap-2">
+                                    {request.user?.name || 'Admin Request'}
+                                    {request.user?.deletedAt && (
+                                        <Badge variant="secondary">
+                                            Deleted user
+                                        </Badge>
+                                    )}
+                                </div>
                             </TableCell>
                             <TableCell>
                                 <Badge
